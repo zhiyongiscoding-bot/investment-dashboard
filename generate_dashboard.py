@@ -137,7 +137,7 @@ def read_ml_dashboard():
 def process_bjex_data(bjex_data):
     """处理北交所数据：涨跌幅和收益率乘以100"""
     for row in bjex_data:
-        for i in (6, 8, 9):  # 首日收盘涨跌幅, 正股/碎股年化收益率 (用户已删除均价涨跌幅列)
+        for i in (6, 7, 8):  # 首日收盘涨跌幅, 正股/碎股年化收益率
             if row[i] is not None:
                 try:
                     row[i] = float(row[i]) * 100
@@ -832,7 +832,7 @@ def generate_html(calendar_events, bjex_headers, bjex_data,
             renderCalendar();
             
             // 北交所：data.xlsx中已处理为百分比数值（如246.14）
-            const bjexHeaders = ['股票代码', '股票名称', '上市日期', '发行价格(元)', '正股门槛(万元)', '碎股门槛(万元)', '首日收盘涨跌幅(%)', '正股年化收益率(%)', '碎股年化收益率(%)', '中签公布日期'];
+            const bjexHeaders = ['股票代码', '股票名称', '上市日期', '发行价格(元)', '正股门槛(万元)', '碎股门槛(万元)', '首日收盘涨跌幅', '正股年化收益率', '碎股年化收益率', '中签公布日期'];
             const bjexFmt = {{6: {{type:'pct_display', digits:2}}, 7: {{type:'pct_display', digits:2}}, 8: {{type:'pct_display', digits:2}}}};
             renderTable('bjex-table', bjexHeaders, bjexData, bjexFmt);
             
